@@ -1,0 +1,104 @@
+<config>
+
+    <modules>
+        <RLTS_Certification>
+            <version>0.1.0</version>
+        </RLTS_Certification>
+    </modules>
+
+	<global>
+		<models>
+			<RLTS_Certification>
+				<class>RLTS_Certification_Model</class>
+			</RLTS_Certification>
+		</models>
+		
+		<helpers>
+			<Certification>
+				<class>RLTS_Certification_Helper</class>
+			</Certification>
+		</helpers>
+		
+		<events>
+            <customer_save_before>
+                <observers>
+                    <RLTS_Certification_ObservePreCustomerSave>
+						<type>model</type>
+                        <class>RLTS_Certification/Observer</class>
+                        <method>updateAutoStatusChangeDate</method>
+                    </RLTS_Certification_ObservePreCustomerSave>
+                </observers>
+            </customer_save_before>
+        </events>
+		
+		<template>
+            <email>
+                <certification_renewal_notification  module="RLTS_Certification">
+                    <label>Certification Renewal Notification</label>
+                    <file>certification_renewal_notification.html</file>
+                    <type>html</type>
+                </certification_renewal_notification>
+            </email>
+        </template>
+	</global>
+
+    <frontend>
+        <routers>
+            <cpris>
+                <use>standard</use>
+                <args>
+                    <module>RLTS_Certification</module>
+                    <frontName>certi</frontName>
+                </args>
+            </cpris>
+        </routers>
+    </frontend>
+	
+	<adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<rlts>
+											<title>RLTSquare - All</title>
+										</rlts>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+
+    <crontab>
+        <jobs>
+            <update_certi_status>
+                <schedule>
+                    <cron_expr>0 0 * * 0</cron_expr>
+                </schedule>
+                <run>
+                    <model>RLTS_Certification/StatusHelper::updateCertiStatus</model>
+                </run>
+            </update_certi_status>
+			
+            <certi_renewal_reminder>
+                <schedule>
+                    <cron_expr>0 9 * * 1</cron_expr>
+                </schedule>
+                <run>
+                    <model>RLTS_Certification/StatusHelper::certiRenewalReminder</model>
+                </run>
+            </certi_renewal_reminder>
+        </jobs>
+    </crontab>
+	
+</config>

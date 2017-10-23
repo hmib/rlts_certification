@@ -1,0 +1,11 @@
+<config>
+    <modules>
+        <RLTS_Certification>
+            <active>true</active>
+            <codePool>local</codePool>
+			<depends>
+                <Mage_Customer />
+            </depends>
+        </RLTS_Certification>
+    </modules>
+</config>

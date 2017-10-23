@@ -1,0 +1,57 @@
+<config>
+
+    <sections>
+        <rlts translate="label" module="Certification">
+            <label>Certification Durations</label>
+            <tab>rltsquare</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+ 
+            <groups>
+                <rlts_group translate="label" module="Certification">
+                    <label>Certification Durations</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+ 
+                    <fields>
+                        <rlts_input_1 translate="label">
+                            <label>Duration (in months) for 'Candidate': </label>
+                            <comment># of months after which a 'candiate' reverts to being 'inactive'</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-digits</validate>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rlts_input_1>
+                        <rlts_input_2 translate="label">
+                            <label>Duration (in months) for 'Certified': </label>
+                            <comment># of months after which a 'certified' expires and reverts to being 'inactive'</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-digits</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rlts_input_2>
+                        <rlts_input_3 translate="label">
+                            <label>Duration (in months) for 'Renewel': </label>
+                            <comment># of months BEFORE which a 'certified' user is allowed to renew the certification</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-digits</validate>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rlts_input_3>																								
+                    </fields>
+                </rlts_group>
+            </groups>
+        </rlts>
+    </sections>
+</config>
